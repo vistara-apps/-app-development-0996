@@ -3,12 +3,44 @@
 @tailwind utilities;
 
 :root {
+  /* Brand Colors */
   --color-primary: hsl(210, 90%, 50%);
+  --color-primary-hover: hsl(210, 90%, 45%);
+  --color-primary-light: hsl(210, 90%, 95%);
   --color-accent: hsl(160, 80%, 45%);
+  --color-accent-hover: hsl(160, 80%, 40%);
+  --color-accent-light: hsl(160, 80%, 95%);
+  
+  /* Semantic Colors */
+  --color-success: hsl(142, 76%, 36%);
+  --color-success-hover: hsl(142, 76%, 31%);
+  --color-success-light: hsl(142, 76%, 95%);
+  --color-warning: hsl(38, 92%, 50%);
+  --color-warning-hover: hsl(38, 92%, 45%);
+  --color-warning-light: hsl(38, 92%, 95%);
+  --color-error: hsl(0, 84%, 60%);
+  --color-error-hover: hsl(0, 84%, 55%);
+  --color-error-light: hsl(0, 84%, 95%);
+  --color-info: hsl(217, 91%, 60%);
+  --color-info-hover: hsl(217, 91%, 55%);
+  --color-info-light: hsl(217, 91%, 95%);
+  
+  /* Neutral Colors */
   --color-bg: hsl(210, 30%, 95%);
   --color-surface: hsl(210, 30%, 100%);
+  --color-surface-hover: hsl(210, 30%, 98%);
+  --color-border: hsl(210, 30%, 85%);
+  --color-border-hover: hsl(210, 30%, 75%);
   --color-text-primary: hsl(210, 30%, 10%);
   --color-text-secondary: hsl(210, 30%, 30%);
+  --color-text-tertiary: hsl(210, 30%, 50%);
+  --color-text-inverse: hsl(0, 0%, 100%);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px hsla(0, 0%, 0%, 0.05);
+  --shadow-md: 0 4px 8px hsla(0, 0%, 0%, 0.05);
+  --shadow-lg: 0 8px 16px hsla(0, 0%, 0%, 0.1);
+  --shadow-xl: 0 16px 32px hsla(0, 0%, 0%, 0.1);
 }
 
 @layer base {
@@ -20,20 +52,45 @@
 }
 
 @layer components {
+  /* Typography Scale */
   .display {
-    @apply text-5xl font-bold;
+    @apply text-5xl font-bold leading-tight;
   }
   
   .heading1 {
-    @apply text-3xl font-semibold;
+    @apply text-3xl font-semibold leading-tight;
+  }
+  
+  .heading2 {
+    @apply text-2xl font-semibold leading-tight;
+  }
+  
+  .heading3 {
+    @apply text-xl font-semibold leading-snug;
+  }
+  
+  .heading4 {
+    @apply text-lg font-medium leading-snug;
+  }
+  
+  .body-lg {
+    @apply text-lg font-normal leading-relaxed;
   }
   
   .body {
     @apply text-base font-normal leading-7;
   }
   
+  .body-sm {
+    @apply text-sm font-normal leading-6;
+  }
+  
   .caption {
     @apply text-sm font-light leading-5;
+  }
+  
+  .caption-xs {
+    @apply text-xs font-light leading-4;
   }
   
   .container {
