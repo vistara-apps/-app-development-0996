@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: hsl(210, 90%, 50%);
+  --color-accent: hsl(160, 80%, 45%);
+  --color-bg: hsl(210, 30%, 95%);
+  --color-surface: hsl(210, 30%, 100%);
+  --color-text-primary: hsl(210, 30%, 10%);
+  --color-text-secondary: hsl(210, 30%, 30%);
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+  }
+}
+
+@layer components {
+  .display {
+    @apply text-5xl font-bold;
+  }
+  
+  .heading1 {
+    @apply text-3xl font-semibold;
+  }
+  
+  .body {
+    @apply text-base font-normal leading-7;
+  }
+  
+  .caption {
+    @apply text-sm font-light leading-5;
+  }
+  
+  .container {
+    @apply max-w-6xl mx-auto px-4;
+  }
+  
+  .card {
+    @apply bg-surface rounded-lg shadow-card p-6;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-text-primary px-4 py-2 rounded-md hover:bg-gray-300 transition-colors;
+  }
+  
+  .btn-outline {
+    @apply border border-primary text-primary px-4 py-2 rounded-md hover:bg-primary hover:text-white transition-colors;
+  }
+  
+  .input {
+    @apply border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+}
