@@ -7,10 +7,13 @@ import { Subscriptions } from './pages/Subscriptions';
 import { Analytics } from './pages/Analytics';
 import { Settings } from './pages/Settings';
 import { Landing } from './pages/Landing';
+import { ToastContainer } from './components/ui/Toast';
 import { useAuthStore } from './store/authStore';
+import { useToast } from './hooks/useToast';
 
 function App() {
   const { isAuthenticated } = useAuthStore();
+  const { toasts, removeToast } = useToast();
 
   return (
     <Router>
@@ -30,6 +33,9 @@ function App() {
             <Route path="*" element={<Landing />} />
           </Routes>
         )}
+        
+        {/* Global Toast Container */}
+        <ToastContainer toasts={toasts} onClose={removeToast} />
       </div>
     </Router>
   );

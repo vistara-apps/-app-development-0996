@@ -74,38 +74,51 @@ export function Landing() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary to-accent text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="display mb-6">
-            Automate Your Subscription Revenue
-          </h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Scale your business with usage-based billing, automated overage charges, 
-            and intelligent profit margin management.
-          </p>
+      <section className="relative py-24 bg-gradient-to-br from-primary via-primary-hover to-accent text-white overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20"></div>
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <div className="animate-fade-in">
+            <h1 className="display mb-6 bg-gradient-to-r from-white to-white/90 bg-clip-text text-transparent">
+              Automate Your Subscription Revenue
+            </h1>
+            <p className="body-lg mb-8 max-w-3xl mx-auto text-white/90 leading-relaxed">
+              Scale your business with usage-based billing, automated overage charges, 
+              and intelligent profit margin management. Turn your power users into your biggest revenue drivers.
+            </p>
+          </div>
           
-          <Card variant="elevated" className="max-w-md mx-auto bg-white text-text-primary">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold mb-4">Get Started Today</h3>
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mb-4"
-              />
-              <Button 
-                onClick={handleGetStarted}
-                className="w-full"
-                disabled={!email}
-              >
-                Start Free Trial
-              </Button>
-              <p className="text-sm text-text-secondary mt-2">
-                No credit card required • 14-day free trial
-              </p>
-            </div>
-          </Card>
+          <div className="animate-slide-up delay-300">
+            <Card variant="elevated" className="max-w-md mx-auto bg-white text-text-primary shadow-xl">
+              <div className="text-center">
+                <h3 className="heading3 mb-6 text-text-primary">Get Started Today</h3>
+                <Input
+                  type="email"
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  size="lg"
+                  className="mb-4"
+                />
+                <Button 
+                  onClick={handleGetStarted}
+                  size="lg"
+                  className="w-full mb-4"
+                  disabled={!email}
+                >
+                  Start Free Trial
+                </Button>
+                <p className="caption text-text-tertiary">
+                  No credit card required • 14-day free trial • Cancel anytime
+                </p>
+              </div>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -125,22 +138,28 @@ export function Landing() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
+      <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="heading1 mb-4">Everything You Need to Scale</h2>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+            <h2 className="heading1 mb-6">Everything You Need to Scale</h2>
+            <p className="body-lg text-text-secondary max-w-3xl mx-auto">
               TokenFlow Subs provides all the tools you need to implement sophisticated 
-              subscription billing with usage-based overages.
+              subscription billing with usage-based overages and maximize revenue from every customer.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center">
-                <feature.icon size={48} className="text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-text-secondary">{feature.description}</p>
+              <Card 
+                key={index} 
+                variant="interactive"
+                className="text-center group hover:scale-105 transition-transform duration-200"
+              >
+                <div className="w-16 h-16 bg-primary-light rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-200">
+                  <feature.icon size={32} className="text-primary group-hover:text-white" />
+                </div>
+                <h3 className="heading3 mb-4 text-text-primary">{feature.title}</h3>
+                <p className="body text-text-secondary leading-relaxed">{feature.description}</p>
               </Card>
             ))}
           </div>

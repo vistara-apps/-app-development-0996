@@ -1,12 +1,13 @@
 import React from 'react';
 import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
+import { StatGrid } from '../components/ui/StatCard';
 import { UsageMeter } from '../components/usage/UsageMeter';
 import { 
   TrendingUp, 
   Users, 
   DollarSign, 
-  AlertTriangle,
+  CreditCard,
   Plus,
   ArrowUpRight
 } from 'lucide-react';
@@ -17,30 +18,46 @@ export function Dashboard() {
     {
       title: 'Total Revenue',
       value: '$24,567',
-      change: '+12.5%',
-      icon: DollarSign,
-      color: 'text-green-600',
+      change: {
+        value: '+12.5%',
+        type: 'increase' as const,
+        period: 'vs last month',
+      },
+      icon: <DollarSign size={24} />,
+      variant: 'success' as const,
     },
     {
       title: 'Active Subscriptions',
       value: '1,247',
-      change: '+8.2%',
-      icon: Users,
-      color: 'text-blue-600',
+      change: {
+        value: '+8.2%',
+        type: 'increase' as const,
+        period: 'vs last month',
+      },
+      icon: <Users size={24} />,
+      variant: 'info' as const,
     },
     {
       title: 'Overage Revenue',
       value: '$3,891',
-      change: '+23.1%',
-      icon: TrendingUp,
-      color: 'text-accent',
+      change: {
+        value: '+23.1%',
+        type: 'increase' as const,
+        period: 'vs last month',
+      },
+      icon: <TrendingUp size={24} />,
+      variant: 'warning' as const,
     },
     {
-      title: 'Plans Created',
+      title: 'Active Plans',
       value: '12',
-      change: '+2',
-      icon: AlertTriangle,
-      color: 'text-primary',
+      change: {
+        value: '+2',
+        type: 'increase' as const,
+        period: 'this month',
+      },
+      icon: <CreditCard size={24} />,
+      variant: 'default' as const,
     },
   ];
 
@@ -91,25 +108,7 @@ export function Dashboard() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat, index) => (
-          <Card key={index} className="animate-slide-up" style={{ animationDelay: `${index * 100}ms` }}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="caption text-text-secondary">{stat.title}</p>
-                <p className="text-2xl font-bold text-text-primary mt-1">{stat.value}</p>
-                <div className="flex items-center mt-2">
-                  <ArrowUpRight size={14} className={stat.color} />
-                  <span className={`text-sm ${stat.color}`}>{stat.change}</span>
-                </div>
-              </div>
-              <div className={`p-3 rounded-full bg-gray-100`}>
-                <stat.icon size={24} className={stat.color} />
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
+      <StatGrid stats={stats} className="animate-slide-up" />
 
       {/* Usage Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -143,6 +142,9 @@ export function Dashboard() {
                     usageLimit={subscription.usageLimit}
                     overageCharges={subscription.overageCharges}
                     planName=""
+                    unit="API calls"
+                    showTrend={true}
+                    trendValue={Math.random() > 0.5 ? Math.floor(Math.random() * 20) : -Math.floor(Math.random() * 10)}
                   />
                 </div>
               ))}
